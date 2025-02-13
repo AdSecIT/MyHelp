@@ -1,13 +1,22 @@
+# .readthedocs.yaml
 version: 2
 
-# Explicitly set the OS and Python versions
 build:
-  os: "ubuntu-24.04"
+  os: "ubuntu-22.04"
   tools:
-    nodejs: "20"
-    python: "3.12"
+    python: "3.10"
 
-    # Explicitly set the version of Python and its requirements
 python:
   install:
-    - requirements: docs/requirements.txt
+    - method: pip
+      path: .
+      extra_requirements:
+        - docs
+
+sphinx:
+  configuration: docs/conf.py
+
+formats:
+  - pdf
+  - epub
+  - htmlzip
